@@ -31,4 +31,4 @@ class Ticket(models.Model):
     id_ticket = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return self.id_ticket
+        return f"Ticket - {self.id_ticket}"

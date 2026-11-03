@@ -6,15 +6,17 @@ from django.utils.html import format_html
 
 @admin.register(Pelicula)
 class PeliculaAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'genero', 'fecha_estreno', 'precio_formateado', 'estado', 'imagen')
-    readonly_fields = ('imagen',)
+    list_display = ('nombre', 'genero', 'fecha_estreno', 'precio_formateado', 'imagen_formateada', 'estado')
     list_filter = ('genero',)
     search_field = ('nombre',)
 
     @admin.display(description='Imagen')
-    def imagen(self, obj):
+    def imagen_formateada(self, obj):
         if obj.imagen:
-            return format_html('<img src="{}" width="100" height="100" />', obj.imagen.url)
+            return format_html(
+                '<img src="{}" style="height:100px; border-radius:5px; ">',
+                obj.imagen.url
+            )
         return "No hay imagen disponible"
 
     @admin.display(description='Precio')
