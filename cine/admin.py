@@ -36,7 +36,7 @@ class GeneroAdmin(admin.ModelAdmin):
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
-    list_display = ('codigo', 'pelicula', 'nombre_cliente', 'cantidad_entradas', 'fecha_compra')
+    list_display = ('codigo', 'pelicula', 'nombre_cliente', 'cant_entradas', 'fecha_compra')
     list_filter = ('pelicula',)
 
     @admin.display(description='Código')
